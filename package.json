@@ -1,0 +1,23 @@
+{
+  "name": "sell-textbooks",
+  "version": "1.0.0",
+  "description": "Textbook sharing platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joepena/sell-textbooks.git"
+  },
+  "author": "Joe, Kim, David, Wylie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joepena/sell-textbooks/issues"
+  },
+  "homepage": "https://github.com/Joepena/sell-textbooks#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "oracledb": "^1.11.0"
+  }
+}
