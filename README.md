@@ -8,4 +8,4 @@
   4. download repo and run `npm install`
   5. Set-up your dbConfig.js file
   6. run command `node app.js` while in directory.
-  7. your app is running on `http://http://localhost:3000/`
+  7. your app is running on `http://localhost:3000/`
