@@ -26,5 +26,6 @@
     3. run the following:
       * `node insertAccounts.js`
       * `node insertItems.js`
+      * `node generateListings.js`
   7. run command `node app.js` while in directory.
   8. your app is running on `http://http://localhost:3000/`
