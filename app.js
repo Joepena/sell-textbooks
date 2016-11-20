@@ -27,6 +27,7 @@ var oracledb   = require('oracledb'),
             res.render("landing");
           });
 
+
           //Sell
           app.get('/sell', function (req, res) {
             res.render("sell");
@@ -36,6 +37,17 @@ var oracledb   = require('oracledb'),
           app.get('/buy', function (req, res) {
             res.render("buy");
           });
+
+          //User - Sign up
+          app.get('/signup',function (req, res) {
+             res.render("signup");
+          });
+
+          //User - Login
+          app.get('/login',function (req, res) {
+             res.render("login");
+          });
+
           //Redirect
           app.use(function(req,res){
             res.sendStatus(404);
