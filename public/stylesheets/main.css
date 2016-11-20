@@ -26,6 +26,7 @@ p{
 .line{
 		margin-bottom: 5px;
 	}
+
 .jumbotron .contents {
     padding-left: 30px;
     padding-right: 30px
@@ -36,3 +37,7 @@ p{
 			width: 100%;
 		}
 	}
+
+#stats{
+	margin:15px;
+}
