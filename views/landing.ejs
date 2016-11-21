@@ -19,9 +19,9 @@
     <div class="row" id="stats">Overall Stats</div>
     <div class="row">
         <ul>
-        <li>Books sold (this month vs last month): <b><%=percentDiff %></b> Increase</li>
-        <li>Total Books sold last month: 100</li>
-        <li>Total Books sold this month: 105</li>
+        <li>Books sold (this month vs last month): <b><%= percentDiff %> %</b></li>
+        <li>Total Books sold last month: <b><%= countLastMonth %></b></li>
+        <li>Total Books sold this month: <b><%= countCurrentMonth %></b></li>
         </ul>
     </div>
 </div>
