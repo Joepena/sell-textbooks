@@ -3,7 +3,7 @@ var oracledb      = require('oracledb'),
     express       = require('express'),
     app           = express(),
     path          = require('path'),
-    statsQuery  = require('./queries/Statistic');
+    statsQuery  = require('./queries/statistic');
     
 
     app.set("view engine", "ejs");
