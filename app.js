@@ -2,8 +2,9 @@ var oracledb   = require('oracledb'),
     dbConfig   = require('./dbConfig'),
     express    = require('express'),
     app        = express(),
-    path       = require('path');
-
+    path       = require('path'),
+    queries    = require('./queries/Statistic.js');
+    
 
     app.set("view engine", "ejs");
     app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +25,12 @@ var oracledb   = require('oracledb'),
 
           //Landing
           app.get('/', function (req, res) {
-            res.render("landing");
+            var percentage;
+            connection.execute(queries.percentDiff, function(err,result){
+                                if(err) {console.error(err.message); return;}
+                                percentage = result;    
+                              });
+            res.render("landing",{percentDiff: percentage});
           });
 
 
