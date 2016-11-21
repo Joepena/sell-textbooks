@@ -3,7 +3,7 @@ var oracledb      = require('oracledb'),
     express       = require('express'),
     app           = express(),
     path          = require('path'),
-    statsQueries  = require('./queries/Statistic.js');
+    statsQuery  = require('./queries/Statistic');
     
 
     app.set("view engine", "ejs");
@@ -29,17 +29,17 @@ var oracledb      = require('oracledb'),
             var countLastMonth;
             var percentDiff;
             var countCurrentMonth;
-            connection.execute(statsQueries.countLastMonth, function(err,result){
+            connection.execute(statsQuery.countLastMonthQuery, function(err,result){
                       if(err) {console.error(err.message); return;}
                       //console.log(result.rows[0][0]);
                       countLastMonth = result.rows[0][0];   
 
-                      connection.execute(statsQueries.percentageDiff, function(err,result){
+                      connection.execute(statsQuery.percentageDiff, function(err,result){
                           if(err) {console.error(err.message); return;}
                           //console.log(result.rows[0][0]);
-                          percentDiff = result.rows[0][0]; 
+                          percentDiff = Math.round(result.rows[0][0]); 
                       
-                          connection.execute(statsQueries.countCurrentMonthQuery, function(err,result){
+                          connection.execute(statsQuery.countCurrentMonthQuery, function(err,result){
                               if(err) {console.error(err.message); return;}
                               //console.log(result.rows[0][0]);
                               countCurrentMonth = result.rows[0][0]; 

@@ -1,15 +1,15 @@
 
+var statsQuery = {};
 
-
- var countLastMonthQuery = "Select count(*) as TotalSales"+
+ statsQuery.countLastMonthQuery = "Select count(*) as TotalSales"+
                         " From Listing l"+
                         " Where l.TRANSACTIONDATE > TO_DATE('2016-09-20','YYYY-MM-DD')"
 
- var countCurrentMonthQuery = "Select count(*) as TotalSales"+
+ statsQuery.countCurrentMonthQuery = "Select count(*) as TotalSales"+
                         " From Listing l"+
                         " Where l.TRANSACTIONDATE > TO_DATE('2016-10-20','YYYY-MM-DD')"                       
 
- var percentageDiff = `Select (((x.transactions/y.transactions)-1)*100) as Change
+ statsQuery.percentageDiff = `Select (((y.transactions/x.transactions))*100) as Change
                         From (select count(*) as transactions
                         From Listing l
                         Where l.TRANSACTIONDATE>TO_DATE('2016-09-20','YYYY-MM-DD') and
@@ -24,6 +24,4 @@
                         
  
                               
-exports.countLastMonth = countLastMonthQuery;
-exports.percentageDiff = percentageDiff; 
-exports.countCurrentMonthQuery = countCurrentMonthQuery;                             
+module.exports = statsQuery;                            
