@@ -76,6 +76,7 @@ var oracledb      = require('oracledb'),
             end = range[1];
             connection.execute(buyQuery.loadAllFrom(start,end), function(err,result){
               if(err) {console.log(err); return;}
+
               res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24});
             });
           });

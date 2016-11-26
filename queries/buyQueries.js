@@ -7,8 +7,9 @@ buyQueries.loadAllFrom    = function loadAllFrom(start,end) {
                                         return  base + "ROWNUM Between 0 AND 24"
                                                 
                                      }
-                                     console.log(base+"ROWNUM Between "+start+" AND "+end);
-                                     return base+"ROWNUM Between "+start+" AND "+end;
+                                    // console.log(base+"ROWNUM Between "+start+" AND "+end);
+                                    return base+"ROWNUM Between "+start+" AND "+end;
+                        
                              };
 
 
