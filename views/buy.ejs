@@ -25,7 +25,10 @@
 		  <% })%>
   		<!-- END PRODUCTS -->
 	</div>
-	<a class="btn btn-primary pull-right">Next Page</a>
-	<a class="btn btn-primary pull-right">Previous Page</a>
+	<a class="btn btn-primary pull-right" href="/buy/<%=rangeStart+':'+rangeEnd%>">Next Page</a>
+	<% if(Number(rangeStart) !== 0){ %>
+	<% var begin = rangeStart-24; %>
+	<a class=" btn btn-primary pull-right" href="/buy/<%= begin+':'+rangeStart %>">Previous Page</a>
+	<% } %>
 </div>
 <%include partials/footer%>

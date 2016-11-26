@@ -4,13 +4,15 @@ var oracledb      = require('oracledb'),
     app           = express(),
     path          = require('path'),
     statsQuery    = require('./queries/statistic'),
-    buyQuery      = require('./queries/buyQueries');
+    buyQuery      = require('./queries/buyQueries'),
+    bodyParser    = require('body-parser');
     
 
     app.set("view engine", "ejs");
     app.set('views', path.join(__dirname, 'views'));
     app.use(express.static(__dirname+"/public"));
-    
+    app.use(bodyParser.urlencoded({extended: true}));
+
     oracledb.getConnection(
         {
           user          : dbConfig.username,
@@ -59,9 +61,22 @@ var oracledb      = require('oracledb'),
 
           //Buy
           app.get('/buy', function (req, res) {
+            
             connection.execute(buyQuery.loadAllFrom(), function(err,result){
               if(err) {console.log(err); return;}
-              res.render("buy",{results: result.rows});
+              res.render("buy",{results: result.rows, rangeStart:24, rangeEnd: 48});
+            });
+          });
+
+          app.get('/buy/:range', function (req, res) {
+            var start;
+            var end;
+            var range = req.params.range.split(':'); 
+            start = range[0];
+            end = range[1];
+            connection.execute(buyQuery.loadAllFrom(start,end), function(err,result){
+              if(err) {console.log(err); return;}
+              res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24});
             });
           });
 
