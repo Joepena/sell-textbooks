@@ -3,7 +3,8 @@ var oracledb      = require('oracledb'),
     express       = require('express'),
     app           = express(),
     path          = require('path'),
-    statsQuery  = require('./queries/statistic');
+    statsQuery    = require('./queries/statistic'),
+    buyQuery      = require('./queries/buyQueries');
     
 
     app.set("view engine", "ejs");
@@ -58,7 +59,10 @@ var oracledb      = require('oracledb'),
 
           //Buy
           app.get('/buy', function (req, res) {
-            res.render("buy");
+            connection.execute(buyQuery.loadAllFrom(), function(err,result){
+              if(err) {console.log(err); return;}
+              res.render("buy",{results: result.rows});
+            });
           });
 
           //User - Sign up
