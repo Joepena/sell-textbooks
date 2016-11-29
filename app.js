@@ -5,6 +5,7 @@ var oracledb      = require('oracledb'),
     path          = require('path'),
     statsQuery    = require('./queries/statistic'),
     buyQuery      = require('./queries/buyQueries'),
+    adminQuery    = require('./queries/adminQueries'),
     bodyParser    = require('body-parser');
     
 
@@ -76,7 +77,7 @@ var oracledb      = require('oracledb'),
             end = range[1];
             connection.execute(buyQuery.loadAllFrom(start,end), function(err,result){
               if(err) {console.log(err); return;}
-
+              console.log(result.rows);
               res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24});
             });
           });
@@ -89,6 +90,28 @@ var oracledb      = require('oracledb'),
           //User - Login
           app.get('/login',function (req, res) {
              res.render("login");
+          });
+
+          //Admin
+          app.get('/admin',function (req, res) {
+             var listingQuantity, itemQuantity, accountQuantity;
+             connection.execute(adminQuery.listingCount, function(err,result){
+               if(err) {console.log(err); return;}
+               listingQuantity = result.rows[0][0];
+               
+               connection.execute(adminQuery.itemCount, function(err,result){
+                if(err) {console.log(err); return;}
+                itemQuantity = result.rows[0][0];
+                
+                connection.execute(adminQuery.accountCount, function(err,result){
+                  if(err) {console.log(err); return;}
+                  accountQuantity = result.rows[0][0];
+                  
+                  res.render("admin",{listingQuantity:listingQuantity,itemQuantity:itemQuantity,accountQuantity:accountQuantity  });
+               });
+              });
+             });
+             
           });
 
           //Redirect

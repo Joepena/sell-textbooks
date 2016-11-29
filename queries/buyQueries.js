@@ -9,7 +9,14 @@ buyQueries.loadAllFrom    = function loadAllFrom(start,end) {
                                      }
                                     // console.log(base+"ROWNUM Between "+start+" AND "+end);
                                     return base+"ROWNUM Between "+start+" AND "+end;
-                        
+                                    // return `select *
+                                    //         from (select i.TITLE, a.FIRST_NAME,a.LAST_NAME, i.AUTHOR,i.ISBN,l.PRICE
+                                    //               from ACCOUNT a, ITEM i, LISTING l
+                                    //               where a.EMAIL=l.EMAIL and
+                                    //                     i.ISBN=l.ISBN and
+                                    //                     l.ISSOLD='F')
+                                    //         where rownum Between 24 and 48
+                                    //        `
                              };
 
 

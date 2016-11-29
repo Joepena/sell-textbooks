@@ -15,7 +15,8 @@ var oracledb   = require('oracledb'),
         //we are generating 100k tuples for listings
         //100 iterations of selecting an account file and a item file and randomizing their selection 1k times per random file
         var iteration =1;
-        for(var i=1; i<=99; i++){
+        var count = 1;
+        for(var i=1; i<=100; i++){
             //select two random files to iterate 1k times
             var randomAccountFile = Math.ceil(Math.random()*9);
             var randomItemFile = Math.ceil(Math.random()*9);
@@ -54,7 +55,7 @@ var oracledb   = require('oracledb'),
                   function(err, result)
                   {
                     if (err) { console.error(err.message); return; }
-                    else console.log('success on this one..');
+                    else console.log(count++);
                   });
 
         });
