@@ -13,7 +13,7 @@ var oracledb   = require('oracledb'),
         if (err) { console.error(err.message); return; }
         console.log('Connection was successful!');
         for(var i=1; i<=20; i++){
-            var obj = JSON.parse(fs.readFileSync('json_ items/item_'+i+'.json', 'utf8'));
+            var obj = JSON.parse(fs.readFileSync('json_items/item_'+i+'.json', 'utf8'));
 
             var tableName = 'ITEM';
             obj.forEach(function (entry){
