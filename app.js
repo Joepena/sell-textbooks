@@ -84,7 +84,12 @@ var oracledb      = require('oracledb'),
 
           //Buy - show page
           app.get('/buy/:id', function(req,res){
-            res.send(req.params.id);
+           connection.execute(buyQuery.loadListing(req.params.id), function(err,result){
+            if(err) {console.log(err); return;}
+            console.log(result.rows);
+            res.render("show",{results: result.rows});
+            });
+ 
           });
 
           //User - Sign up
