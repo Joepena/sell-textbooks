@@ -6,22 +6,24 @@
         <h1>Find Textbooks</h1>
         <p>Buy textbooks from other students, at a fraction of the price!</p>
         <p>
-            <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search by textbook name, ISBN, author">
-            <span class="input-group-btn">
-            <button class="btn btn-success" type="button">Enter</button>
-            </span>
-          </div>
+        <form action="/buy/query/" method="GET">
+            <div class="form-group">
+              <input name="queryString" type="text" class="form-control" placeholder="Search by textbook name, ISBN, author">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success" type="button">Enter</button>
+            </div>
+          </form>
         </p>
       </div>
     </div>
 
     <div class="row" id="stats">Overall Stats</div>
     <div class="row">
-        <ul>
-        <li>Books sold (this month vs last month): <b>5%</b> Increase</li>
-        <li>Total Books sold last month: 100</li>
-        <li>Total Books sold this month: 105</li>
+        <ul >
+        <li>Books sold (this month vs last month): <b><%= percentDiff %> % Increase </b></li>
+        <li>Total Books sold last month: <b><%= countLastMonth %></b></li>
+        <li>Total Books sold this month: <b><%= countCurrentMonth %></b></li>
         </ul>
     </div>
 </div>
