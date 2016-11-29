@@ -61,14 +61,15 @@ var oracledb      = require('oracledb'),
           });
 
           //Buy
-          app.get('/buy/viewAll', function (req, res) {
+          app.get('/buy/viewAll/', function (req, res) {
             
             connection.execute(buyQuery.loadAllFrom(), function(err,result){
               if(err) {console.log(err); return;}
-              res.render("buy",{results: result.rows, rangeStart:24, rangeEnd: 48});
+              res.render("buy",{results: result.rows, rangeStart:24, rangeEnd: 48, url:req.url});
             });
           });
-
+          
+          //Buy - rangeSearch
           app.get('/buy/viewAll/:range', function (req, res) {
             var start;
             var end;
@@ -78,15 +79,24 @@ var oracledb      = require('oracledb'),
             connection.execute(buyQuery.loadAllFrom(start,end), function(err,result){
               if(err) {console.log(err); return;}
               console.log(result.rows);
-              res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24});
+              res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24, url: req.url});
             });
+          });
+          
+          //Buy - query
+          app.get('/buy/query', function(req,res){
+            var queryString = req.query.queryString;
+            connection.execute(buyQuery.loadSearchQuery(queryString,null,null), function(err,result){
+              if(err) {console.log(err); return;}
+              res.render("buy",{results:result.rows, rangeStart:24,rangeEnd:48, url: req.url});
+            });
+            
           });
 
           //Buy - show page
           app.get('/buy/:id', function(req,res){
            connection.execute(buyQuery.loadListing(req.params.id), function(err,result){
             if(err) {console.log(err); return;}
-            console.log(result.rows);
             res.render("show",{results: result.rows});
             });
  
