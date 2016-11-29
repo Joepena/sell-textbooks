@@ -61,7 +61,7 @@ var oracledb      = require('oracledb'),
           });
 
           //Buy
-          app.get('/buy', function (req, res) {
+          app.get('/buy/viewAll', function (req, res) {
             
             connection.execute(buyQuery.loadAllFrom(), function(err,result){
               if(err) {console.log(err); return;}
@@ -69,7 +69,7 @@ var oracledb      = require('oracledb'),
             });
           });
 
-          app.get('/buy/:range', function (req, res) {
+          app.get('/buy/viewAll/:range', function (req, res) {
             var start;
             var end;
             var range = req.params.range.split(':'); 
@@ -80,6 +80,11 @@ var oracledb      = require('oracledb'),
               console.log(result.rows);
               res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24});
             });
+          });
+
+          //Buy - show page
+          app.get('/buy/:id', function(req,res){
+            res.send(req.params.id);
           });
 
           //User - Sign up
