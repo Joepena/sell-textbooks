@@ -15,7 +15,8 @@ var oracledb   = require('oracledb'),
         console.log('Connection was successful!');
 
         for(var i = 1; i<=11; i++){
-            var obj = JSON.parse(fs.readFileSync('/json_accounts/user_'+i+'.json', 'utf8'));
+
+            var obj = JSON.parse(fs.readFileSync('json_accounts/user_'+i+'.json', 'utf8'));
 
             var tableName = 'ACCOUNT';
 
