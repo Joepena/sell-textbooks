@@ -1,22 +1,26 @@
 <% include partials/header %>
-  <div class="container">
+<div class="container">
+
+<%results.forEach(function(row){ %>
   <div class="row">
        <div class="col-lg-6 col-sm-6">
-          <h1>Book Title</h1>
-          <h4>By: Author</h1>
-          <h4>ISBN: 9283728234</h1>
-          <h4>Condition: Good</h1>
 
- 
+        
+          <h1><%=row[0]%></h1>
+          <h4>By: <%=row[1]%></h1>
+          <h4>Date published: <%=row[2]%></h4>
+          <h4>ISBN: <%=row[3]%></h4>
+          <h4>Condition: <%=row[4]%></h1>
 
           <br>
-          <h5>Seller: John Smith</h5>
-          <h5>Listing published on: 10/1/16</h5>
+          <h5>Seller: <%=row[5]%> <%=row[6]%>  </h5>
+          <h5>Contact seller: <%=row[7]%> </h5>
+          
 
           <hr>
           <div class="row">
             <div class="col-md-6 col-sm-6">
-                <p class="price">$20.00</p>
+                <p class="price">$<%=row[8]%>.00</p>
             </div>
             <div class="col-md-6 col-sm-6">
                   <a href=""><button class="btn btn-success right" > BUY ITEM</button></a>
@@ -24,12 +28,18 @@
 
           </div>
        </div>
+      
 
       <div class="col-lg-6 col-sm-6">
         <a href="#" class="thumbnail">
           <img src="/placeholder.jpg" alt="...">
         </a>
+        <p class="pull-right">listing id: <%=row[9]%></p>
       </div>
   </div>
+   <% })%> 
+   
 </div>
+
+
 <% include partials/footer %>

@@ -1,6 +1,7 @@
 var buyQueries = {} ;
 
 buyQueries.loadAllFrom    = function(start,end) {
+
                                      var base = `Select title,first_name,last_name, author, ISBN, price, listingId 
                                                  From (Select * From Listing Where Listing.IsSold = 'F') Natural Join Item Natural Join Account 
                                                  Where `;
@@ -23,11 +24,13 @@ buyQueries.loadAllFrom    = function(start,end) {
                              };
 
 buyQueries.loadListing  = function(id){
-    return `Select * from LISTING Where listingId = ${id}`;
+ return `Select title, author, date_published,ISBN, condition, first_name, last_name, email, price, listingId
+            From (Select * From Listing Where Listing.listingId = ${id}) Natural Join Item Natural Join Account`;
+         
 };
 
 buyQueries.loadSearchQuery  = function(queryString,start,end){
-                                    var base = `Select title,first_name,last_name, author, ISBN, price, listingId 
+                                    var base = `Select title,first_name,last_name, author, ISBN, price, listingId
                                                  From (Select * From Listing Where Listing.IsSold = 'F') Natural Join Item Natural Join Account 
                                                  Where `;
                                     if(!start && !end){
