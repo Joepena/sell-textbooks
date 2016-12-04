@@ -45,5 +45,21 @@ adminQueries.topTen = `select*
                                    l.ISSOLD='T'
 	                         Group by a.Email
 	                         Order by NumberSold desc)
-                        Where rownum<=10`;                                                                                                                                               
+                        Where rownum<=10`; 
+adminQueries.avgConditionChange = `select (likenew.x-perfect.x) as "Perfect to Like New", (verygood.x-likenew.x) as "Like New to Very Good", (good.x-verygood.x) as "Very Good to Good", (acceptable.x-good.x) as "Good to Acceptable"
+                                from(select round(avg(PRICE),2)as x
+                                     from LISTING
+                                     where CONDITION='Perfect')perfect,
+                                     (select round(avg(PRICE),2)as x
+                                      from LISTING
+                                      where CONDITION='Like New')likenew,
+                                      (select round(avg(PRICE),2)as x
+                                       from LISTING
+                                       where CONDITION='Very Good')verygood,
+                                      (select round(avg(PRICE),2)as x
+                                       from LISTING
+                                       where CONDITION='Good')good,
+                                       (select round(avg(PRICE),2)as x
+                                        from LISTING
+                                        where CONDITION='Acceptable')acceptable`                                                                                                                                                                         
 module.exports = adminQueries;

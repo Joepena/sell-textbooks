@@ -67,8 +67,4 @@ buyQueries.loadSearchQuery  = function(queryString,start,end){
                                                 where rnum>${start}`                                             
 };
 
-
-
-
-
 module.exports = buyQueries;

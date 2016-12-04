@@ -9,7 +9,6 @@
         <form action="/buy/query/" method="GET">
             <div class="form-group">
               <input name="queryString" type="text" class="form-control" placeholder="Search by textbook name, ISBN, author">
-              <button class="btn btn-success" type="button">Enter</button>
             </div>
           
           </form>
@@ -20,7 +19,7 @@
     <div class="row" id="stats">Overall Stats</div>
     <div class="row">
         <ul >
-        <li><b><%= percentDiff %> % Increase </b></li>
+        <li>Books sold (this month vs last month): <b><%= percentDiff %> % Increase </b></li>
         <li>Total Books sold last month: <b><%= countLastMonth %></b></li>
         <li>Total Books sold this month: <b><%= countCurrentMonth %></b></li>
         </ul>

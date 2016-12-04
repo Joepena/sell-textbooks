@@ -16,19 +16,35 @@
         <hr>
         <h4>Top Ten Users With Their Total Sales And Earnings</h5>
         <table class="table">
-        <tr>
-            <th>Email</th><th>Quantity</th><th> Total Earnings</th>
-        </tr>
+            <tr>
+                <th>Email</th><th>Quantity</th><th> Total Earnings</th>
+            </tr>
 
-        <% topTen.forEach(function(row){ %>
-        <tr>
-            <td><%= row[0] %></td>
-            <td><%= row[1] %></td>
-            <td><%= row[2] %></td>
-        </tr>    
-   <% }); %>
-</table>
-      </div>
+            <% topTen.forEach(function(row){ %>
+                <tr>
+                    <td><%= row[0] %></td>
+                    <td><%= row[1] %></td>
+                    <td><%= row[2] %></td>
+                </tr>    
+            <% }); %>
+        </table>
+        <hr>
+        <h4>Average Change In Price From One Condition To Another </h4>
+        <table class="table">
+            <tr>
+                <th>Perfect to LikeNew</th><th>LikeNew to VeryGood</th><th>VeryGood to Good</th><th>Good to Acceptable</th>
+            </tr>
+
+            <% avgConditionChange.forEach(function(row){ %>
+                <tr>
+                    <td><%= row[0] %>%</td>
+                    <td><%= row[1] %>%</td>
+                    <td><%= row[2] %>%</td>
+                    <td><%= row[3] %>%</td>
+                </tr>    
+            <% }); %>
+        </table>
     </div>
+</div>
 
 <%include partials/footer%>

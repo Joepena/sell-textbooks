@@ -131,7 +131,7 @@ var oracledb      = require('oracledb'),
           //Admin
           app.get('/admin',function (req, res) {
              var listingQuantity, itemQuantity, accountQuantity, mostPopular, 
-                 leastPopular, mostExpensive, leastExpensive, unsoldCount;
+                 leastPopular, mostExpensive, leastExpensive, unsoldCount, topTen;
              connection.execute(adminQuery.listingCount, function(err,result){
                if(err) {console.log(err); return;}
                listingQuantity = result.rows[0][0];
@@ -163,9 +163,16 @@ var oracledb      = require('oracledb'),
                             unsoldCount = result.rows[0][0];
                             connection.execute(adminQuery.topTen, function(err,result){
                               if(err) {console.log(err); return;}
-                              res.render("admin",{listingQuantity:listingQuantity,itemQuantity:itemQuantity,accountQuantity:accountQuantity,mostPopular: mostPopular,
-                                            leastPopular:leastPopular,mostExpensive: mostExpensive, leastExpensive: leastExpensive, unsoldCount: unsoldCount, topTen: result.rows
+                              var topTen = result.rows;
+                              connection.execute(adminQuery.avgConditionChange, function(err,result){
+                                if(err) {console.log(err); return;}
+
+                                res.render("admin",{listingQuantity:listingQuantity,itemQuantity:itemQuantity,accountQuantity:accountQuantity,mostPopular: mostPopular,
+                                            leastPopular:leastPopular,mostExpensive: mostExpensive, leastExpensive: leastExpensive, unsoldCount: unsoldCount, topTen: topTen,
+                                            avgConditionChange: result.rows
                                           });
+                               });  
+                              
                             });  
                             
                           });         

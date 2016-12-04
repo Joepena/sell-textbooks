@@ -22,8 +22,7 @@ var statsQuery = {};
                               l.TRANSACTIONDATE<TO_DATE('2016-09-28','YYYY-MM-DD') and
                               l.ISSOLD='T')y
                         `
-
-                        
+                    
  
                               
 module.exports = statsQuery;                            
