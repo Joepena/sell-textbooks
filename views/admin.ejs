@@ -12,6 +12,22 @@
         <p>Least Popular Textbook: <strong><%= leastPopular%></strong></p>
         <p>Most Expensive  Textbook: <strong><%= mostExpensive%></strong></p>
         <p>Least Expensive  Textbook: <strong><%= leastExpensive%></strong></p>
+        <p>Count Of Unsold Listings Over A Year: <strong><%=unsoldCount%></strong></p>
+        <hr>
+        <h4>Top Ten Users With Their Total Sales And Earnings</h5>
+        <table class="table">
+        <tr>
+            <th>Email</th><th>Quantity</th><th> Total Earnings</th>
+        </tr>
+
+        <% topTen.forEach(function(row){ %>
+        <tr>
+            <td><%= row[0] %></td>
+            <td><%= row[1] %></td>
+            <td><%= row[2] %></td>
+        </tr>    
+   <% }); %>
+</table>
       </div>
     </div>
 

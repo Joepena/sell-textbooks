@@ -130,7 +130,8 @@ var oracledb      = require('oracledb'),
 
           //Admin
           app.get('/admin',function (req, res) {
-             var listingQuantity, itemQuantity, accountQuantity, mostPopular, leastPopular, mostExpensive, leastExpensive;
+             var listingQuantity, itemQuantity, accountQuantity, mostPopular, 
+                 leastPopular, mostExpensive, leastExpensive, unsoldCount;
              connection.execute(adminQuery.listingCount, function(err,result){
                if(err) {console.log(err); return;}
                listingQuantity = result.rows[0][0];
@@ -157,9 +158,18 @@ var oracledb      = require('oracledb'),
                         connection.execute(adminQuery.leastExpensive, function(err,result){
                           if(err) {console.log(err); return;}
                           leastExpensive = result.rows[0][0];
-                          res.render("admin",{listingQuantity:listingQuantity,itemQuantity:itemQuantity,accountQuantity:accountQuantity,mostPopular: mostPopular,
-                                            leastPopular:leastPopular,mostExpensive: mostExpensive, leastExpensive: leastExpensive
+                          connection.execute(adminQuery.unsoldQueries, function(err,result){
+                            if(err) {console.log(err); return;}
+                            unsoldCount = result.rows[0][0];
+                            connection.execute(adminQuery.topTen, function(err,result){
+                              if(err) {console.log(err); return;}
+                              res.render("admin",{listingQuantity:listingQuantity,itemQuantity:itemQuantity,accountQuantity:accountQuantity,mostPopular: mostPopular,
+                                            leastPopular:leastPopular,mostExpensive: mostExpensive, leastExpensive: leastExpensive, unsoldCount: unsoldCount, topTen: result.rows
                                           });
+                            });  
+                            
+                          });         
+                          
                       });                  
                     });
                   });

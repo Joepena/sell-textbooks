@@ -34,5 +34,16 @@ adminQueries.leastExpensive = `select *
                                      where i.ISBN = l.ISBN and
                                            l.ISSOLD='T'
                                      order by l.PRICE asc)
-                                where rownum=1`;                                                                                   
+                                where rownum=1`;   
+adminQueries.unsoldQueries = `select count(*) as "Number of Unsold Books"
+                              from LISTING
+                              where ISSOLD='F'`;
+adminQueries.topTen = `select*
+                       From (select a.Email, count(*) as NumberSold, sum(l.PRICE) as TotalEarnings
+	                         From LISTING l, ACCOUNT a
+	                         Where a.Email = l.Email and
+                                   l.ISSOLD='T'
+	                         Group by a.Email
+	                         Order by NumberSold desc)
+                        Where rownum<=10`;                                                                                                                                               
 module.exports = adminQueries;
