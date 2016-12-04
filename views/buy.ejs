@@ -25,10 +25,12 @@
 		  <% })%>
   		<!-- END PRODUCTS -->
 	</div>
-	<a class="btn btn-primary pull-right" href="<%=url+'/'+rangeStart+':'+rangeEnd%>">Next Page</a>
+	<% var nextBegin = Number(rangeStart)+24; %>
+	<% var nextEnd = Number(rangeEnd)+24; %>
+	<a class="btn btn-primary pull-right" href="<%=url+'/'+nextBegin+':'+nextEnd%>">Next Page</a>
 	<% if(rangeStart != 24 ){ %>
-	<% var begin = rangeStart-48; %>
-	<% var end = rangeEnd-24; %>
+	<% var begin = Number(rangeStart)-24; %>
+	<% var end = Number(rangeEnd)-24; %>
 	<a class=" btn btn-primary pull-right" href="<%=url+'/'+begin+':'+end %>">Previous Page</a>
 	<% } %>
 </div>

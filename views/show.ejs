@@ -1,26 +1,25 @@
 <% include partials/header %>
 <div class="container">
 
-<%results.forEach(function(row){ %>
+
   <div class="row">
        <div class="col-lg-6 col-sm-6">
 
-        
-          <h1><%=row[0]%></h1>
-          <h5>By: <%=row[1]%></h5>
-          <h5>Date published: <%=row[2]%></h5>
-          <h5>ISBN: <%=row[3]%></h5>
-          <h5>Condition: <%=row[4]%></h5>
+          <h1><%=results[0][0]%></h1>
+          <h5>By: <%=results[0][1]%></h5>
+          <h5>Date published: <%=results[0][2].getMonth()+"/"+results[0][2].getDay()+"/"+results[0][2].getFullYear()%></h5>
+          <h5>ISBN: <%=results[0][3]%></h5>
+          <h5>Condition: <%=results[0][4]%></h5>
 
           <br>
-          <h5>Seller: <%=row[5]%> <%=row[6]%></h5>
-          <h5>Contact seller: <%=row[7]%> </h5>
+          <h5>Seller: <%=results[0][5]%> <%=results[0][6]%></h5>
+          <h5>Contact seller: <%=results[0][7]%> </h5>
           
 
           <hr>
           <div class="row">
             <div class="col-md-6 col-sm-6">
-                <p class="price">$<%=row[8]%>.00</p>
+                <p class="price">$<%=results[0][8]%>.00</p>
             </div>
             <div class="col-md-6 col-sm-6">
                   <a href=""><button class="btn btn-success right"> BUY ITEM</button></a>
@@ -34,10 +33,10 @@
         <a href="#" class="thumbnail">
           <img src="/placeholder.jpg" alt="...">
         </a>
-        <p class="pull-right">listing-id: <%=row[9]%></p>
+        <p class="pull-right">listing-id: <%=results[0][9]%></p>
       </div>
   </div>
-   <% })%> 
+
    
 </div>
 

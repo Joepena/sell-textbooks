@@ -78,8 +78,7 @@ var oracledb      = require('oracledb'),
             end = range[1];
             connection.execute(buyQuery.loadAllFrom(start,end), function(err,result){
               if(err) {console.log(err); return;}
-              console.log(result.rows);
-              res.render("buy",{results: result.rows, rangeStart:end, rangeEnd: Number(end)+24, url: req.url});
+              res.render("buy",{results: result.rows, rangeStart:start, rangeEnd: end, url: req.url.substring(0, req.url.lastIndexOf("/"))});
             });
           });
           
@@ -88,7 +87,7 @@ var oracledb      = require('oracledb'),
             var queryString = req.query.queryString;
             connection.execute(buyQuery.loadSearchQuery(queryString,null,null), function(err,result){
               if(err) {console.log(err); return;}
-              res.render("buy",{results:result.rows, rangeStart:24,rangeEnd:48, url: req.url});
+              res.render("buy",{results:result.rows, rangeStart:Number(24),rangeEnd:Number(48), url: req.url});
             });
             
           });
