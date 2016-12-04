@@ -1,15 +1,18 @@
 <%include partials/header%>
+<div class="container">
+    <div class="jumbotron">
+      <div class="contents">
+        <h1>Stats</h1>
+        <hr>
+        <p>Number Of Listing Tuples: <b><%= listingQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> </b></p>
+        <p>Number Of Item Tuples: <b><%= itemQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></p>
+        <p>Number Of Account Tuples: <b><%= accountQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></p>
+        <p>Number Of Total Tuples: <b><%= (listingQuantity + itemQuantity + accountQuantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></p>
+        <p>Most Popular Textbook: <strong><%= mostPopular%></strong></p>
+        <p>Least Popular Textbook: <strong><%= leastPopular%></strong></p>
+        <p>Most Expensive  Textbook: <strong><%= mostExpensive%></strong></p>
+        <p>Least Expensive  Textbook: <strong><%= leastExpensive%></strong></p>
+      </div>
+    </div>
 
-<div class = "container">
-    <div class="row" >Total Number of Tuples </div>
-    
-        <ul>
-        <li>Number Of Listing Tuples: <b><%= listingQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> </b></li>
-        <li>Number Of Item Tuples: <b><%= itemQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></li>
-        <li>Number Of Account Tuples: <b><%= accountQuantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></li>
-        <li>Number Of Total Tuples: <b><%= (listingQuantity + itemQuantity + accountQuantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></b></li>
-        </ul>
-   
-</div>
-</div>
 <%include partials/footer%>

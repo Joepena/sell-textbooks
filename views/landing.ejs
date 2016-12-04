@@ -3,16 +3,15 @@
 <div class="container">
     <div class="jumbotron">
       <div class="contents">
-        <h1>Find Textbooks</h1>
+        <h1>Find Textbooks <i class = "glyphicon glyphicon-book"></i></h1>
         <p>Buy textbooks from other students, at a fraction of the price!</p>
         <p>
         <form action="/buy/query/" method="GET">
             <div class="form-group">
               <input name="queryString" type="text" class="form-control" placeholder="Search by textbook name, ISBN, author">
-            </div>
-            <div class="form-group">
               <button class="btn btn-success" type="button">Enter</button>
             </div>
+          
           </form>
         </p>
       </div>
@@ -21,7 +20,7 @@
     <div class="row" id="stats">Overall Stats</div>
     <div class="row">
         <ul >
-        <li>Books sold (this month vs last month): <b><%= percentDiff %> % Increase </b></li>
+        <li><b><%= percentDiff %> % Increase </b></li>
         <li>Total Books sold last month: <b><%= countLastMonth %></b></li>
         <li>Total Books sold this month: <b><%= countCurrentMonth %></b></li>
         </ul>
