@@ -37,7 +37,9 @@ p{
 			width: 100%;
 		}
 	}
-
+.btn-space{
+	margin-right: 10px;
+}
 
 #stats{
 	margin:15px;

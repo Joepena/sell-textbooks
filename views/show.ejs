@@ -6,17 +6,15 @@
        <div class="col-lg-6 col-sm-6">
 
           <h1><%=results[0][0]%></h1>
-          <h5>By: <%=results[0][1]%></h5>
-          <h5>Date published: <%=results[0][2].getMonth()+"/"+results[0][2].getDay()+"/"+results[0][2].getFullYear()%></h5>
-          <h5>ISBN: <%=results[0][3]%></h5>
-          <h5>Condition: <%=results[0][4]%></h5>
-
+          <h5><strong>By: </strong><%=results[0][1]%></h5>
+          <h5><strong>Date published: </strong><%=results[0][2].getMonth()+"/"+results[0][2].getDay()+"/"+results[0][2].getFullYear()%></h5>
+          <h5><strong>ISBN: </strong> <%=results[0][3]%></h5>
+          <h5><strong>Condition: </strong> <%=results[0][4]%></h5>
+          <h5><strong>Average Price: </strong> </h5>
           <br>
-          <h5>Seller: <%=results[0][5]%> <%=results[0][6]%></h5>
-          <h5>Contact seller: <%=results[0][7]%> </h5>
-          
-
-          <hr>
+          <h5><strong>Seller: </strong><%=results[0][5]%> <%=results[0][6]%></h5>
+          <h5><strong>Contact seller: </strong><%=results[0][7]%> </h5>
+      
           <div class="row">
             <div class="col-md-6 col-sm-6">
                 <p class="price">$<%=results[0][8]%>.00</p>
@@ -30,9 +28,9 @@
       
 
       <div class="col-lg-6 col-sm-6">
-        <a href="#" class="thumbnail">
+        
           <img src="/placeholder.jpg" alt="...">
-        </a>
+       
         <p class="pull-right">listing-id: <%=results[0][9]%></p>
       </div>
   </div>
