@@ -24,6 +24,7 @@ buyQueries.loadAllFrom    = function(start,end) {
 buyQueries.loadListing  = function(id){
                             return `Select title, author, date_published,ISBN, condition, first_name, last_name, email, price, listingId
                                     From (Select * From Listing Where Listing.listingId = ${id}) Natural Join Item Natural Join Account`;
+
          
                          };
 buyQueries.loadAvg      = function(id){

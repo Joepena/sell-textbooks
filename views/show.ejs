@@ -1,21 +1,24 @@
 <% include partials/header %>
-<div class="container">
-
+<div class="listing container">
 
   <div class="row">
-       <div class="col-lg-6 col-sm-6">
+     <div class="col-lg-7 col-sm-7">
+        <h1><%=results[0][0]%></h1>
+         <div class="book-info">
+        <h5><strong>By: </strong><%=results[0][1]%></h5>
+        <% var date = results[0][2].toString().split(' ').slice(0,4).join(' ') %>
+        <h5><strong>Date published: </strong><%=date%></h5>
+        <h5><strong>ISBN: </strong> <%=results[0][3]%></h5>
+        <h5><strong>Condition: </strong> <%=results[0][4]%></h5>
+        <h5><strong>Average Price: </strong>$<%=avg%> </h5>
+        <br>
+      </div>
 
-          <h1><%=results[0][0]%></h1>
-          <h5><strong>By: </strong><%=results[0][1]%></h5>
-          <% var date = results[0][2].toString().split(' ').slice(0,4).join(' ') %>
-          <h5><strong>Date published: </strong><%=date%></h5>
-          <h5><strong>ISBN: </strong> <%=results[0][3]%></h5>
-          <h5><strong>Condition: </strong> <%=results[0][4]%></h5>
-          <h5><strong>Average Price: </strong>$<%=avg%> </h5>
-          <br>
+      <div class="seller-info">
           <h5><strong>Seller: </strong><%=results[0][5]%> <%=results[0][6]%></h5>
           <h5><strong>Contact seller: </strong><%=results[0][7]%> </h5>
       
+          <hr>
           <div class="row">
             <div class="col-md-6 col-sm-6">
                 <p class="price">$<%=results[0][8]%>.00</p>
@@ -23,13 +26,17 @@
             <div class="col-md-6 col-sm-6">
                   <a href=""><button class="btn btn-info pull-right"> Contact Seller</button></a>
             </div>
-
-          </div>
-       </div>
-      <div class="col-lg-6 col-sm-6">
-          <img src="/placeholder.jpg" alt="...">
+         </div>
       </div>
+
+   </div>
+
+  <div class="col-lg-5 col-sm-5">
+      <img class="center-block listing-img" src="/show_placeholder.jpg" alt="...">
   </div>
+
+  </div>
+
 </div>
 
 
