@@ -41,8 +41,17 @@ p{
 	margin-right: 10px;
 }
 
-#stats{
+#stats-header{
 	margin:15px;
+	line-height:18px;
+	color:#696969;
+	font-size:20px;
+}
+
+.stats-list
+{
+	font-size:18px;
+	color:#808080;
 }
 
 .center-img{
@@ -64,4 +73,10 @@ h5{
 	font-weight:normal;
 	/*line-height:15px;*/
 	font-weight:light;
+}
+
+img {
+    width: 100%; /* or any custom size */
+    height: 100%; 
+    object-fit: contain;
 }

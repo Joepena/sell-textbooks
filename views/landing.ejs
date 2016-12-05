@@ -16,15 +16,18 @@
       </div>
     </div>
 
-    <div class="row" id="stats">Overall Stats</div>
+
     <div class="row">
-         <div class="col-lg-6 col-sm-6">
-            <ul >
-            <li>Books sold (this month vs last month): <b><%= percentDiff %> % Increase </b></li>
+        <div class="col-md-8 col-sm-6">
+                <div class="row" id="stats-header">About our website:</div>
+            <ul class="stats-list">
+            <li>Books sold (this month vs last month): <b><%= percentDiff %>% Increase </b></li>
             <li>Total Books sold last month: <b><%= countLastMonth %></b></li>
             <li>Total Books sold this month: <b><%= countCurrentMonth %></b></li>
             </ul>
-
+        </div>
+        <div class="col-md-4 col-sm-6">
+             <img src="/home.jpg" alt="...">
         </div>
 
     </div>
