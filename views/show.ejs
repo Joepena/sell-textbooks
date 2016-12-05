@@ -6,8 +6,9 @@
         <h1><%=results[0][0]%></h1>
          <div class="book-info">
         <h5><strong>By: </strong><%=results[0][1]%></h5>
-        <% var date = results[0][2].toString().split(' ').slice(0,4).join(' ') %>
-        <h5><strong>Date published: </strong><%=date%></h5>
+        <% var date = results[0][2].split(' ') %>
+        <% date = date[0].split('-') %>
+        <h5><strong>Date published: </strong><%=date[1]+ "-" + date[0]+ "-" + date[2]%></h5>
         <h5><strong>ISBN: </strong> <%=results[0][3]%></h5>
         <h5><strong>Condition: </strong> <%=results[0][4]%></h5>
         <h5><strong>Average Price: </strong>$<%=avg%> </h5>
@@ -24,7 +25,7 @@
                 <p class="price">$<%=results[0][8]%>.00</p>
             </div>
             <div class="col-md-6 col-sm-6">
-                  <a href=""><button class="btn btn-info pull-right"> Contact Seller</button></a>
+                  <a href=""><button class="btn btn-info pull-right">Buy now</button></a>
             </div>
          </div>
       </div>
